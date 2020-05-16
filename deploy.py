@@ -1,6 +1,6 @@
 from flask import Flask, json
 import requests
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 
