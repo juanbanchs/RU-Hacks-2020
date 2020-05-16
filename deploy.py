@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return '<h1>YAYYY GOT THE APP WORKING</h1>'
+	return print('Hello World')
 
 
 if __name__ == "__main__":
