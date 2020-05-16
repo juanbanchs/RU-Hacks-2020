@@ -15,7 +15,7 @@ def index():
     ###############################################################################################
 
     def get_data_string(ingredient, number):
-        apiKey = "0e3889c6bf0c4b98b9e030238f39e8bf"
+        apiKey = "851e31b033fb47518e40cbd5a6b6019a"
         url = f"https://api.spoonacular.com/recipes/search?query={ingredient}&number={number}&apiKey={apiKey}"
         import requests
         import json
@@ -30,7 +30,7 @@ def index():
         return id_list
 
     def get_nutrition_facts(id):
-        apiKey = "0e3889c6bf0c4b98b9e030238f39e8bf"
+        apiKey = "851e31b033fb47518e40cbd5a6b6019a"
         url = f"https://api.spoonacular.com/recipes/{str(id)}/nutritionWidget.json?apiKey={apiKey}"
         return json.loads(requests.get(url).content.decode('utf-8'))
 
@@ -42,7 +42,7 @@ def index():
         return(calories, [carbs, fat, protein])
 
     def get_recipe_name(id):
-        apiKey = "0e3889c6bf0c4b98b9e030238f39e8bf"
+        apiKey = "851e31b033fb47518e40cbd5a6b6019a"
         url = f"https://api.spoonacular.com/recipes/{id}/information?includeNutrition=false&apiKey={apiKey}"
         information = json.loads(requests.get(url).content.decode('utf-8'))
         return information['title']
@@ -74,7 +74,7 @@ def index():
         #maxFats = input("Please enter maximum fats (if none, enter 0): ")
         number = 3  # input("How many recipes would you like?: ")
 
-        apiKey = "0e3889c6bf0c4b98b9e030238f39e8bf"
+        apiKey = "851e31b033fb47518e40cbd5a6b6019a"
         #url = f"https://api.spoonacular.com/recipes/findByNutrients?minCarbs={minCarbs}&maxCarbs={maxCarbs}&minCalories={minCalories}&maxCalories={maxCalories}&minProteins={minProteins}&maxProteins={maxProteins}&minFats={minFats}&maxFats={maxFats}&number={number}&apiKey={apiKey}"
         url = f"https://api.spoonacular.com/recipes/findByNutrients?minCalories={minCalories}&maxCalories={maxCalories}&number={number}&apiKey={apiKey}"
         options = json.loads(requests.get(url).content.decode('utf-8'))
