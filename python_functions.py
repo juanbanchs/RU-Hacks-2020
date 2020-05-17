@@ -1,14 +1,14 @@
 import requests
 import json
-import matplotlib.pyplot as plt
+import matplotlib
 
+matplotlib.use("TKAgg")
+from matplotlib import pyplot as plt
 
 #gets data as a string when given main ingredient and number
 def get_data_string (ingredient, number):
   apiKey = "851e31b033fb47518e40cbd5a6b6019a"
   url = f"https://api.spoonacular.com/recipes/search?query={ingredient}&number={number}&apiKey={apiKey}"
-  import requests
-  import json
   
   return {"results":[{"id":215435,"title":"Three-Cheese Pizza (For Cheese Lovers)","readyInMinutes":45,"servings":8,"sourceUrl":"http://www.myrecipes.com/m/recipe/three-cheese-pizza-for-cheese--50400000110662/","openLicense":0,"image":"three-cheese-pizza-for-cheese-lovers-215435.jpg"},{"id":323420,"title":"Grilled Cheese","readyInMinutes":55,"servings":4,"sourceUrl":"http://www.foodnetwork.com/recipes/tyler-florence/grilled-cheese-recipe.html","openLicense":0,"image":"grilled-cheese-323420.jpeg"}],"baseUri":"https://spoonacular.com/recipeImages/","offset":0,"number":2,"totalResults":851,"processingTimeMs":454,"expires":1589681250164,"isStale":"apple"}
   #return json.loads(requests.get(url).content.decode('utf-8'))
@@ -45,7 +45,6 @@ def get_recipe_name(id):
 
 #displays a pie chart of calories, name, and nutritional info 
 def plot_pie_chart(title,calories,sizes):
-  import matplotlib.pyplot as plt
 
   labels = 'carbs', 'fat', 'protein'
   colors = ['gold', 'yellowgreen', 'lightcoral', 'lightskyblue']
