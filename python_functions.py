@@ -1,9 +1,10 @@
 import requests
 import json
 import matplotlib
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
 
-matplotlib.use("TKAgg")
-from matplotlib import pyplot as plt
+
 
 #gets data as a string when given main ingredient and number
 def get_data_string (ingredient, number):
