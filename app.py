@@ -1,7 +1,14 @@
-from flask import Flask
+from flask import Flask, render_template
 import python_functions as pf
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
+Bootstrap(app)
+
+
+@app.route('/test')
+def test():
+    return render_template('index.html')
 
 
 @app.route('/')
