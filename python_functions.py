@@ -1,9 +1,7 @@
-from matplotlib import pyplot as plt
+
+import matplotlib.pyplot as plt
 import requests
 import json
-import matplotlib
-
-matplotlib.use("TKAgg")
 
 # gets data as a string when given main ingredient and number
 
@@ -12,7 +10,7 @@ def get_data_string(ingredient, number):
     apiKey = "851e31b033fb47518e40cbd5a6b6019a"
     url = f"https://api.spoonacular.com/recipes/search?query={ingredient}&number={number}&apiKey={apiKey}"
 
-    return {"results": [{"id": 215435, "title": "Three-Cheese Pizza (For Cheese Lovers)", "readyInMinutes": 45, "servings": 8, "sourceUrl": "http://www.myrecipes.com/m/recipe/three-cheese-pizza-for-cheese--50400000110662/", "openLicense": 0, "image": "three-cheese-pizza-for-cheese-lovers-215435.jpg"}, {"id": 323420, "title": "Grilled Cheese", "readyInMinutes": 55, "servings": 4, "sourceUrl": "http://www.foodnetwork.com/recipes/tyler-florence/grilled-cheese-recipe.html", "openLicense": 0, "image": "grilled-cheese-323420.jpeg"}], "baseUri": "https://spoonacular.com/recipeImages/", "offset": 0, "number": 2, "totalResults": 851, "processingTimeMs": 454, "expires": 1589681250164, "isStale": "apple"}
+    return {"results": [{"id": 215435, "title": "Three-Cheese Pizza (For Cheese Lovers)", "readyInMinutes": 45, "servings": 8, "sourceUrl": "http://www.myrecipes.com/m/recipe/three-cheese-pizza-for-cheese--50400000110662/", "openLicense": 0, "image": "three-cheese-pizza-for-cheese-lovers-215435.jpg"}]}
     # return json.loads(requests.get(url).content.decode('utf-8'))
 
 # gets id_list from a dictionary in a list for 'results'
@@ -60,13 +58,16 @@ def plot_pie_chart(title, calories, sizes):
     colors = ['gold', 'yellowgreen', 'lightcoral', 'lightskyblue']
     explode = (0, 0, 0)
 
+    plt.figure()
     plt.pie(sizes, explode=explode, labels=labels, colors=colors,
             autopct='%1.1f%%', shadow=True, startangle=140)
 
     plt.axis('equal')
     plt.title(f"{title} ({calories} kcal)")
-    plt.show()
-    plt.savefig('plot.png')
+    # plt.show()
+    # plt.savefig('plot.png')
+    fig = plt.gcf()
+    return fig
 
 
 def get_customized_recipe_ID_list():

@@ -1,6 +1,8 @@
 {% extends "bootstrap/base.html" %}
 
 {% block content %}
+
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -83,10 +85,27 @@
   <section class="jumbotron text-center">
     <div class="container">
       <h1>Food Shazam</h1>
-      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+      <p class="lead text-muted">This webapp was developed using Flask for Python, as well as Bootstrap and Heroku<H1></H1></p>
       <p>
-        <a href="#" class="btn btn-primary my-2">Main call to action</a>
-        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        
+        <h2>Random data with num_x_points={{num_x_points}}</h2>
+        <form method="get" action="/">
+          <input name="num_x_points" type="number" value="{{num_x_points}}" />
+          <input type="submit" value="update graph" />
+        </form>
+        <h3>Plot as a SVG</h3>
+        <img
+          src="/matplot-as-image-{{num_x_points}}.svg"
+          alt="random points as svg"
+          height="200"
+        />
+    
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type=text/javascript>$(function() {$('a#test').bind('click', function() {$.getJSON('/matplot-as-image-<int:num_x_points>.svg', function(data) {}); return false;});});</script>
+        <script type=text/javascript>$(function() {$('a#test2').bind('click', function() {$.getJSON('/plot.png', function(data) {}); return false;});});</script>
+        <a href="#" id="test" class="btn btn-primary my-2">Main call to action</a>
+        <a href="#" id="test2" class="btn btn-secondary my-2">Secondary action</a>
+        <!-- <img src="/plot.png" alt="my plot"> -->
       </p>
     </div>
   </section>
